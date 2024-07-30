@@ -1,4 +1,4 @@
-module github.com/favadi/protoc-go-inject-tag
+module github.com/nvhai245/protoc-gen-custom-tag
 
 go 1.18
 
