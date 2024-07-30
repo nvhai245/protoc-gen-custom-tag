@@ -12,8 +12,18 @@ func main() {
 	var inputFiles, xxxTags string
 	var removeTagComment bool
 	flag.StringVar(&inputFiles, "input", "", "pattern to match input file(s)")
-	flag.StringVar(&xxxTags, "XXX_skip", "", "tags that should be skipped (applies 'tag:\"-\"') for unknown fields (deprecated since protoc-gen-go v1.4.0)")
-	flag.BoolVar(&removeTagComment, "remove_tag_comment", false, "removes tag comments from the generated file(s)")
+	flag.StringVar(
+		&xxxTags,
+		"XXX_skip",
+		"",
+		"tags that should be skipped (applies 'tag:\"-\"') for unknown fields (deprecated since protoc-gen-go v1.4.0)",
+	)
+	flag.BoolVar(
+		&removeTagComment,
+		"remove_tag_comment",
+		false,
+		"removes tag comments from the generated file(s)",
+	)
 	flag.BoolVar(&verbose, "verbose", false, "verbose logging")
 
 	flag.Parse()
@@ -25,7 +35,7 @@ func main() {
 	}
 
 	if inputFiles == "" {
-		log.Fatal("input file is mandatory, see: -help")
+		inputFiles = "*/*.pb.go"
 	}
 
 	// Note: glob doesn't handle ** (treats as just one *). This will return
